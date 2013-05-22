@@ -24,8 +24,8 @@ my %args = (
     },
 
     no_index    => { 'directory' => [ 'inc' ] },
-    name        => 'WWW-Dojin-COMIC1',
-    module_name => 'WWW::Dojin::COMIC1',
+    name        => 'WWW-DojinEvent',
+    module_name => 'WWW::DojinEvent',
 
     script_files => [glob('script/*'), glob('bin/*')],
 

@@ -1,4 +1,4 @@
-package WWW::Dojin::Event;
+package WWW::DojinEvent;
 use 5.008005;
 use strict;
 use warnings;
@@ -38,7 +38,7 @@ sub parse {
 
 sub _event_class {
     my ($self, $event_name) = @_;
-    return 'WWW::Dojin::Event::'.$event_name ;
+    return 'WWW::DojinEvent::'.$event_name ;
 }
 1;
 __END__
@@ -47,28 +47,28 @@ __END__
 
 =head1 NAME
 
-WWW::Dojin::Event - 同人イベントのサークルリストを取得・パースする
+WWW::DojinEvent - 同人イベントのサークルリストを取得・パースする
 
 =head1 SYNOPSIS
 
-    use WWW::Dojin::Event;
+    use WWW::DojinEvent;
 
-    $circle_list = WWW::Dojin::Event->from_website('COMIC1', '/path/to/circle_list_file', '/tmp/dir');
+    $circle_list = WWW::DojinEvent->from_website('COMIC1', '/path/to/circle_list_file', '/tmp/dir');
 
     # or
 
-    WWW::Dojin::Event->download('http://www.comic1.jp/CM7_circle_list2.htm', 'comic1_circle_list.html');
-    $circle_list = WWW::Dojin::Event->parse('COMIC1', 'comic1_circle_list.html');
+    WWW::DojinEvent->download('http://www.comic1.jp/CM7_circle_list2.htm', 'comic1_circle_list.html');
+    $circle_list = WWW::DojinEvent->parse('COMIC1', 'comic1_circle_list.html');
 
 =head1 DESCRIPTION
 
 同人イベントのサークルリストをPerlの変数構造へ変換します
 
-I<WWW::Dojin::Event::*>にある各種同人イベントモジュールのラッパーとして機能します
+I<WWW::DojinEvent::*>にある各種同人イベントモジュールのラッパーとして機能します
 
 =head1 MODULES
 
-I<WWW::Dojin::Event>下にあるモジュールの一覧
+I<WWW::DojinEvent>下にあるモジュールの一覧
 
 =item COMIC1 L<http://www.comic1.jp/>
 

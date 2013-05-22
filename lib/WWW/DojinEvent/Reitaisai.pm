@@ -1,4 +1,4 @@
-package WWW::Dojin::Event::Reitaisai;
+package WWW::DojinEvent::Reitaisai;
 use 5.008005;
 use strict;
 use warnings;
@@ -70,14 +70,13 @@ __END__
 
 =head1 NAME
 
-WWW::Dojin::COMIC1 - It's new $module
+WWW::DojinEvent::Reitaisai - Reitaisai(博麗神社例大祭)'s website parser
 
 =head1 SYNOPSIS
 
-    use WWW::Dojin::Event::Reitaisai;
-    # download official site's HTML
-    WWW::Dojin::Event::COMIC1('http://www.comic1.jp/CM7_circle_list2.htm', 'tmp/comic1_circle_list.html');
-    $circle_list = WWW::Dojin::Event::COMIC1->parse('comic1_circle_list.html');
+    use WWW::DojinEvent::Reitaisai;
+
+    $circle_list = WWW::DojinEvent::Reitaisai->from_website('comic1_circle_list.html');
 
 
 =head1 LICENSE

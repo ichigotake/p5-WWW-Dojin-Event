@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "WWW-Dojin-COMIC1",
+   "name" : "WWW-DojinEvent-COMIC1",
    "no_index" : {
       "directory" : [
          "t",

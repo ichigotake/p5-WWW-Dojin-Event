@@ -1,4 +1,4 @@
-package WWW::Dojin::Event::COMIC1;
+package WWW::DojinEvent::COMIC1;
 use 5.008005;
 use strict;
 use warnings;
@@ -59,15 +59,15 @@ __END__
 
 =head1 NAME
 
-WWW::Dojin::Event::COMIC1 - COMIC1の出展サークルを取得する
+WWW::DojinEvent::COMIC1 - COMIC1の出展サークルを取得する
 
 =head1 SYNOPSIS
 
-    use WWW::Dojin::Event::COMIC1;
+    use WWW::DojinEvent::COMIC1;
 
-    # download official site's HTML
-    WWW::Dojin::Event::COMIC1('http://www.comic1.jp/CM7_circle_list2.htm', 'tmp/comic1_circle_list.html');
-    $circle_list = WWW::Dojin::Event::COMIC1->parse('comic1_circle_list.html');
+    # download circle list from official site
+    WWW::DojinEvent::COMIC1('http://www.comic1.jp/CM7_circle_list2.htm', 'tmp/comic1_circle_list.html');
+    $circle_list = WWW::DojinEvent::COMIC1->parse('comic1_circle_list.html');
 
 =head1 LICENSE
 
@@ -78,7 +78,7 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-WWW::Dojin::Event
+WWW::DojinEvent
 
 =head1 AUTHOR
 
