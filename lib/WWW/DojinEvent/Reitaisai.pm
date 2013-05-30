@@ -1,66 +1,18 @@
 package WWW::DojinEvent::Reitaisai;
-use 5.008005;
-use strict;
-use warnings;
-use utf8;
-use LWP::Simple;
-use HTML::TreeBuilder::XPath;
-use HTML::Selector::XPath qw(selector_to_xpath);
+
+use WWW::DojinEvent::Base qw/-base/;
 
 our $VERSION = "0.01";
 
-sub from_website {
-    my ($self) = @_;
-    my $res;
-    my @circles;
-    for (1..8) {
-        my $file = "tmp/reitaisai_list_circle$_.html";
-        $self->download("http://reitaisai.com/list_circle$_/", $file);
-        $res = $self->parse($file);
-        push(@circles, @$res);
-    }
-
-    return \@circles;
-}
-
-
-sub download {
-    my ($class, $url, $tmp) = @_;
-    return mirror($url, $tmp);
-}
-
-sub parse {
-    my ($class, $file) = @_;
-    
-    my $p = HTML::TreeBuilder::XPath->new;
-    $p->parse_file($file);
-
-    my @circles;
-    my $i = 0;
-    my ($table) = $p->findnodes( selector_to_xpath('#circlelist') );
-
-    for my$tr( $table->findnodes( selector_to_xpath('tr') ) ) {
-        my @cells = $tr->look_down( _tag => 'td' );
-
-        next unless @cells;
-
-        my ($a) = $cells[1]->look_down( _tag => 'a' );
-
-        my $circle_url = $a ? $a->attr('href') : '';
-
-        if ($circle_url =~ m/http:\/\/reitaisai\.com\/list_circle/) {
-            next;
-        }
-
-        push(@circles, {
-            space       => Encode::decode_utf8($cells[0]->as_text || ''),
-            circle_name => Encode::decode_utf8($cells[1]->as_text || ''),
-            pen_name    => Encode::decode_utf8($cells[2]->as_text || ''),
-            circle_url  => Encode::decode_utf8($circle_url),
-        });
-    }
-
-    return \@circles;
+sub scrape_process {
+    return scraper {
+        process "#circlelist tr", 'circles[]' => scraper {
+                process '//td[1]', 'space' => 'TEXT',
+                process '//td[2]', 'circle_name' => 'TEXT',
+                process '//td[2]/a', 'circle_url' => '@href',
+                process '//td[3]', 'pen_name' => 'TEXT',
+            };
+        };
 }
 
 1;
@@ -76,15 +28,31 @@ WWW::DojinEvent::Reitaisai - Reitaisai(博麗神社例大祭)'s website parser
 
     use WWW::DojinEvent::Reitaisai;
 
-    $circle_list = WWW::DojinEvent::Reitaisai->from_website('comic1_circle_list.html');
+    my $e = WWW::DojinEvent::Reitaisai->new;
 
+    @circles;
+    for $i (1..8) {
+        $res = $e->scrape("http://reitaisai.com/list_circle$i/");
+        @circles = (@circles, @{$res->{circles}});
+    }
+
+    for $circle ( @{$res->{circles}} ) {
+        print "----\n";
+        print "$circle->{space}\n";
+        print "$circle->{circle_name}\n";
+        print "$circle->{pen_name}\n";
+        print "$circle->{circle_url}\n";
+    }
+
+=head1 SEE ALSO
+
+WWW::DojinEvent
 
 =head1 LICENSE
 
 Copyright (C) ichigotake
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.
 
 =head1 AUTHOR
 

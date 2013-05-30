@@ -1,45 +1,26 @@
 package WWW::DojinEvent;
-use 5.008005;
-use strict;
-use warnings;
-use utf8;
-use File::Basename;
+
+use WWW::DojinEvent::Base qw(-base);
+use WWW::DojinEvent::COMIC1;
+use WWW::DojinEvent::Reitaisai;
 
 our $VERSION = "0.01";
 
-sub from_website {
-    my ($self, $event_name, $url, $tmp_dir) = @_;
-    
-    my $event_class = $self->_event_class($event_name);
+sub scrape_process { }
 
-    eval qq{ use $event_class ; };
-
-    $event_class->from_website($url, $tmp_dir);
+sub _create_instance {
+    my ($self, $class) = @_;
+    return $class->new;
 }
 
-sub download {
-    my ($self, $event_name, $url, $output_file) = @_;
-    
-    my $event_class = $self->_event_class($event_name);
-
-    eval qq{ use $event_class ; };
-
-    $event_class->download($url, $output_file);
+sub reitaisai {
+    return shift->_create_instance('WWW::DojinEvent::Reitaisai');
 }
 
-sub parse {
-    my ($self, $event_name, $parse_file) = @_;
-
-    my $event_class = $self->_event_class($event_name);
-    eval qq{ use $event_class ; };
-
-    return $event_class->parse($parse_file);
+sub comic1 {
+    return shift->_create_instance('WWW::DojinEvent::COMIC1');
 }
 
-sub _event_class {
-    my ($self, $event_name) = @_;
-    return 'WWW::DojinEvent::'.$event_name ;
-}
 1;
 __END__
 
@@ -53,12 +34,15 @@ WWW::DojinEvent - 同人イベントのサークルリストを取得・パー�
 
     use WWW::DojinEvent;
 
-    $circle_list = WWW::DojinEvent->from_website('COMIC1', '/path/to/circle_list_file', '/tmp/dir');
+    $comic1 = WWW::DojinEvent->new->comic1;
+    $res = $e->scrape('http://www.comic1.jp/CM7_circle_list.htm');
 
-    # or
-
-    WWW::DojinEvent->download('http://www.comic1.jp/CM7_circle_list2.htm', 'comic1_circle_list.html');
-    $circle_list = WWW::DojinEvent->parse('COMIC1', 'comic1_circle_list.html');
+    for $circle(@{$res->{circles}}) {
+        #print "$circle->{circle_name}\n";
+        #print "$circle->{pen_name}\n";
+        #print "$circle->{circle_url}\n";
+    }
+    
 
 =head1 DESCRIPTION
 
@@ -69,6 +53,8 @@ I<WWW::DojinEvent::*>にある各種同人イベントモジュールのラッ�
 =head1 MODULES
 
 I<WWW::DojinEvent>下にあるモジュールの一覧
+
+メソッド名はsnake_caseになっています
 
 =item COMIC1 L<http://www.comic1.jp/>
 
