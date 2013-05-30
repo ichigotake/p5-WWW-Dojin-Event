@@ -4,7 +4,7 @@ use WWW::DojinEvent::Base qw(-base);
 use WWW::DojinEvent::COMIC1;
 use WWW::DojinEvent::Reitaisai;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 
 sub scrape_process { }
 

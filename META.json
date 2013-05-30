@@ -1,10 +1,10 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "åäººã¤ãã³ãã®ãµã¼ã¯ã«ãªã¹ããåå¾ã»ãã¼ã¹ãã",
    "author" : [
-      "Takayuki Otake <k.wisiiy@gmail.com>"
+      "ichigotake <k.wisiiy (a) gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.0.54, CPAN::Meta::Converter version 2.130880",
+   "generated_by" : "Minilla/v0.4.2, CPAN::Meta::Converter version 2.130880",
    "license" : [
       "perl_5"
    ],
@@ -12,7 +12,7 @@
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
       "version" : "2"
    },
-   "name" : "WWW-DojinEvent-COMIC1",
+   "name" : "WWW-DojinEvent",
    "no_index" : {
       "directory" : [
          "t",
@@ -37,12 +37,14 @@
             "Test::CPAN::Meta" : "0",
             "Test::MinimumVersion" : "0.10108",
             "Test::Pod" : "1.41",
-            "Test::Spellunker" : "v0.0.16"
+            "Test::Spellunker" : "v0.2.2"
          }
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008005"
+            "Class::Accessor::Fast" : "0",
+            "Sub::Identify" : "0",
+            "Web::Scraper" : "0"
          }
       },
       "test" : {
@@ -52,5 +54,19 @@
       }
    },
    "release_status" : "unstable",
-   "version" : "0.01"
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/ichigotake/p5-WWW-DojinEvent/issues"
+      },
+      "homepage" : "https://github.com/ichigotake/p5-WWW-DojinEvent",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/ichigotake/p5-WWW-DojinEvent.git",
+         "web" : "https://github.com/ichigotake/p5-WWW-DojinEvent"
+      }
+   },
+   "version" : "0.02",
+   "x_contributors" : [
+      "ichigotake <k.wisiiy@gmail.com>"
+   ]
 }

@@ -6,12 +6,17 @@ WWW::DojinEvent - 同人イベントのサークルリストを取得・パー�
 
     use WWW::DojinEvent;
 
-    $circle_list = WWW::DojinEvent->from_website('COMIC1', '/path/to/circle_list_file', '/tmp/dir');
+    $comic1 = WWW::DojinEvent->new->comic1;
+    $res = $e->scrape('http://www.comic1.jp/CM7_circle_list.htm');
 
-    # or
+    for $circle(@{$res->{circles}}) {
+        #print "$circle->{circle_name}\n";
+        #print "$circle->{pen_name}\n";
+        #print "$circle->{circle_url}\n";
+    }
+    
 
-    WWW::DojinEvent->download('http://www.comic1.jp/CM7_circle_list2.htm', 'comic1_circle_list.html');
-    $circle_list = WWW::DojinEvent->parse('COMIC1', 'comic1_circle_list.html');
+
 
 # DESCRIPTION
 
@@ -22,6 +27,8 @@ _WWW::DojinEvent::\*_にある各種同人イベントモジュールのラッ�
 # MODULES
 
 _WWW::DojinEvent_下にあるモジュールの一覧
+
+メソッド名はsnake\_caseになっています
 
 - COMIC1 [http://www.comic1.jp/](http://www.comic1.jp/)
 - Reitaisai [http://reitaisai.com/](http://reitaisai.com/)
