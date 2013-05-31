@@ -2,6 +2,7 @@ package WWW::DojinEvent;
 
 use WWW::DojinEvent::Base qw(-base);
 use WWW::DojinEvent::COMIC1;
+use WWW::DojinEvent::Creation;
 use WWW::DojinEvent::Reitaisai;
 
 our $VERSION = "0.02";
@@ -20,6 +21,11 @@ sub reitaisai {
 sub comic1 {
     return shift->_create_instance('WWW::DojinEvent::COMIC1');
 }
+
+sub creation {
+    return shift->_create_instance('WWW::DojinEvent::Creation');
+}
+
 
 1;
 __END__
@@ -57,6 +63,8 @@ I<WWW::DojinEvent>下にあるモジュールの一覧
 メソッド名はsnake_caseになっています
 
 =item COMIC1 L<http://www.comic1.jp/>
+
+=item Creation L<http://www.creation.gr.jp/>
 
 =item Reitaisai L<http://reitaisai.com/>
 
