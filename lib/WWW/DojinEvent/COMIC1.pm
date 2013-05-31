@@ -2,7 +2,7 @@ package WWW::DojinEvent::COMIC1;
 
 use WWW::DojinEvent::Base qw/-base/;
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 
 sub scrape_process {
     return scraper {
