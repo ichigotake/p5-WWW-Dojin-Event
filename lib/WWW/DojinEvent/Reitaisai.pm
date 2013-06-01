@@ -4,6 +4,8 @@ use WWW::DojinEvent::Base qw/-base/;
 
 our $VERSION = "0.03";
 
+sub fields { return qw(space circle_name circle_url pen_name) }
+
 sub scrape_process {
     return scraper {
         process "#circlelist tr", 'circles[]' => scraper {

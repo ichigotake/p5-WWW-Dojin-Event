@@ -10,6 +10,7 @@ use parent qw(Class::Accessor::Fast);
 __PACKAGE__->mk_accessors(qw( tmp_dir scrape_process web_scraper ));
 
 
+sub fields { die "this is abstract method: fields" }
 sub scrape_process { die "this is abstract method: scrape_process" }
 
 # http://hirobanex.net/article/2011/12/1322984633
