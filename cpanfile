@@ -1,4 +1,6 @@
 requires 'Class::Accessor::Fast';
+requires 'Log::Minimal';
+requires 'LWP::UserAgent';
 requires 'Sub::Identify';
 requires 'Web::Scraper';
 

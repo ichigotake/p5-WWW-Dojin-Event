@@ -5,6 +5,8 @@ use warnings;
 use utf8;
 use URI;
 use Web::Scraper;
+use LWP::UserAgent;
+use Log::Minimal;
 use Sub::Identify;
 use parent qw(Class::Accessor::Fast);
 __PACKAGE__->mk_accessors(qw( tmp_dir scrape_process web_scraper ));
@@ -52,6 +54,11 @@ sub new {
 sub scrape {
     my ($self, $url) = @_;
 
+    my $res = LWP::UserAgent->new->head($url);
+    unless ($res->is_success) {
+        warnf("Couldn't access url. code: %s, url: %s", $res->code, $url);
+        return ;
+    }
     return $self->web_scraper->scrape(URI->new($url));
 }
 
