@@ -2,6 +2,10 @@ Revision history for Perl extension WWW-DojinEvent
 
 {{$NEXT}}
 
+0.04 2013-06-01T04:46:35Z
+
+    - add fields method: scraped field name list
+
 0.03 2013-05-31T18:00:05Z
 
     - add Creation.pm #3
