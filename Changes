@@ -2,6 +2,9 @@ Revision history for Perl extension WWW-DojinEvent
 
 {{$NEXT}}
 
+0.05 2013-06-01T07:36:05Z
+    - show warning when invalid $url
+
 0.04 2013-06-01T04:46:35Z
 
     - add fields method: scraped field name list

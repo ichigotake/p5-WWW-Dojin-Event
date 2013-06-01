@@ -5,7 +5,7 @@ use WWW::DojinEvent::COMIC1;
 use WWW::DojinEvent::Creation;
 use WWW::DojinEvent::Reitaisai;
 
-our $VERSION = "0.04";
+our $VERSION = "0.05";
 
 sub scrape_process { }
 
