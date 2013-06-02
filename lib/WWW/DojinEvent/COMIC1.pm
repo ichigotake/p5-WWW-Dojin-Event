@@ -4,7 +4,7 @@ use WWW::DojinEvent::Base qw/-base/;
 
 our $VERSION = "0.05";
 
-sub fields { return qw(circle_name circle_url pen_name) }
+sub fields { return qw(circle_name circle_name_kana circle_url) }
 
 sub scrape_process {
     return scraper {
