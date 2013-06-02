@@ -2,7 +2,7 @@ package WWW::DojinEvent::Creation;
 
 use WWW::DojinEvent::Base qw/-base/;
 
-our $VERSION = "0.05";
+our $VERSION = "0.06";
 
 sub fields { return qw(space circle_name circle_url pen_name) }
 
