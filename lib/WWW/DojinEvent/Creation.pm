@@ -12,7 +12,10 @@ sub scrape_process {
                 process '//td[1]', 'space' => 'TEXT',
                 process '//td[2]', 'circle_name' => 'TEXT',
                 process '//td[3]', 'pen_name' => 'TEXT',
-                process '//td[4]/a', 'circle_url' => '@href',
+                process '//td[4]/a', 'circle_url' => [ '@href', sub {
+                    (my $url = $_->as_string) =~ s/^.+\?//;
+                    URI->new($url);
+                }],
             };
         };
 }
