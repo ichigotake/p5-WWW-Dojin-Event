@@ -2,7 +2,7 @@ package WWW::DojinEvent::COMIC1;
 
 use WWW::DojinEvent::Base qw/-base/;
 
-our $VERSION = "0.06";
+our $VERSION = "0.07";
 
 sub fields { return qw(circle_name circle_name_kana circle_url) }
 
