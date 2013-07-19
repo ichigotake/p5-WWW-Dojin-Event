@@ -12,22 +12,14 @@ sub new {
     bless {}, $class;
 }
 
-sub _create_instance {
-    my ($self, $class) = @_;
-    load $class;
-    return $class->new;
-}
-
-sub reitaisai {
-    return shift->_create_instance('WWW::DojinEvent::Reitaisai');
-}
-
-sub comic1 {
-    return shift->_create_instance('WWW::DojinEvent::COMIC1');
-}
-
-sub creation {
-    return shift->_create_instance('WWW::DojinEvent::Creation');
+sub module {
+    my ($self, $name) = @_;
+    warn $name;
+    my $class = "WWW::DojinEvent::$name";
+    Module::Load::load($class);
+    $self->{"module#$name"} //= do {
+        $class->new;
+    };
 }
 
 
@@ -44,8 +36,8 @@ WWW::DojinEvent - 同人イベントのサークルリストを取得・パー�
 
     use WWW::DojinEvent;
 
-    $comic1 = WWW::DojinEvent->new->comic1;
-    $res = $e->scrape('http://www.comic1.jp/CM7_circle_list.htm');
+    $event = WWW::DojinEvent->new;
+    $res = $event->module('COMIC1')->scrape('http://www.comic1.jp/CM7_circle_list.htm');
 
     for $circle(@{$res->{circles}}) {
         #print "$circle->{circle_name}\n";
