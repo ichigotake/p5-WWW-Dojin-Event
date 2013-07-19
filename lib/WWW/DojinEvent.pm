@@ -1,16 +1,20 @@
 package WWW::DojinEvent;
 
-use WWW::DojinEvent::Base qw(-base);
-use WWW::DojinEvent::COMIC1;
-use WWW::DojinEvent::Creation;
-use WWW::DojinEvent::Reitaisai;
+use strict;
+use warnings;
+use utf8;
+use Module::Load;
 
 our $VERSION = "0.07";
 
-sub scrape_process { }
+sub new {
+    my ($class) = @_;
+    bless {}, $class;
+}
 
 sub _create_instance {
     my ($self, $class) = @_;
+    load $class;
     return $class->new;
 }
 

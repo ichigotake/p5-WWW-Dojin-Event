@@ -6,41 +6,12 @@ use utf8;
 use URI;
 use Web::Scraper;
 use LWP::UserAgent;
-use Log::Minimal;
-use Sub::Identify;
 use parent qw(Class::Accessor::Fast);
 __PACKAGE__->mk_accessors(qw( tmp_dir scrape_process web_scraper ));
 
 
 sub fields { die "this is abstract method: fields" }
 sub scrape_process { die "this is abstract method: scrape_process" }
-
-# http://hirobanex.net/article/2011/12/1322984633
-sub import {
-    my ($parent, $name) = @_;
-    my $child = caller(0);
-
-    no strict 'refs';
-    if ( $name && $name =~ /^-base/ ) {
-        if ( ! $child->isa($parent) ) {
-            push @{"$child\::ISA"}, $parent;
-        }
-
-        for my $func (sort keys %{"${parent}::"}) {
-            next if $func =~ /^(?:BEGIN|CHECK|END)$/;
-            next if $func =~ /^_/;
-            my $code = *{"${parent}::${func}"}{CODE};
-            next unless $code;
-            next if $parent eq Sub::Identify::stash_name($code);
-
-            *{"$child\::$func"} = $code;
-        }
-
-        strict->import;
-        warnings->import;
-        utf8->import;
-    }
-}
 
 sub new {
     my ($class, @args) = @_;
@@ -56,7 +27,7 @@ sub scrape {
 
     my $res = LWP::UserAgent->new->head($url);
     unless ($res->is_success) {
-        warnf("Couldn't access url. code: %s, url: %s", $res->code, $url);
+        warn sprintf("Couldn't access url. code: %s, url: %s", $res->code, $url);
         return ;
     }
     return $self->web_scraper->scrape(URI->new($url));
