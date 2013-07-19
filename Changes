@@ -1,6 +1,8 @@
 Revision history for Perl extension WWW-DojinEvent
 
 {{$NEXT}}
+
+0.08 2013-07-19T17:01:43Z
     - add sample script
     - change module interface
     - reduce dependencies

@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Module::Load;
 
-our $VERSION = "0.07";
+our $VERSION = "0.08";
 
 sub new {
     my ($class) = @_;
