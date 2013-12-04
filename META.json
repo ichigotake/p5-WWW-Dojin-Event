@@ -1,10 +1,10 @@
 {
-   "abstract" : "åäººã¤ãã³ãã®ãµã¼ã¯ã«ãªã¹ããåå¾ã»ãã¼ã¹ãã",
+   "abstract" : "åäººã¤ãã³ãã®ãã¼ã¿ãåãæ±ã",
    "author" : [
       "ichigotake <k.wisiiy (a) gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Minilla/v0.5.6, CPAN::Meta::Converter version 2.130880",
+   "generated_by" : "Minilla/v0.11.0, CPAN::Meta::Converter version 2.132140",
    "license" : [
       "perl_5"
    ],
@@ -21,7 +21,8 @@
          "share",
          "eg",
          "examples",
-         "author"
+         "author",
+         "builder"
       ]
    },
    "prereqs" : {
@@ -41,10 +42,15 @@
          }
       },
       "runtime" : {
+         "recommends" : {
+            "Text::CSV_XS" : "0"
+         },
          "requires" : {
             "Class::Accessor::Fast" : "0",
+            "Encode::Guess" : "0",
             "LWP::UserAgent" : "0",
             "Module::Load" : "0",
+            "Text::CSV" : "0",
             "Web::Scraper" : "0"
          }
       },
@@ -62,11 +68,11 @@
       "homepage" : "https://github.com/ichigotake/p5-WWW-DojinEvent",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/ichigotake/p5-WWW-DojinEvent.git",
+         "url" : "git://github.com/ichigotake/p5-WWW-DojinEvent",
          "web" : "https://github.com/ichigotake/p5-WWW-DojinEvent"
       }
    },
-   "version" : "0.08",
+   "version" : "0.09",
    "x_contributors" : [
       "ichigotake <k.wisiiy@gmail.com>"
    ]
