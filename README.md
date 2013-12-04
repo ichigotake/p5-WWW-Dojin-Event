@@ -1,6 +1,6 @@
 # NAME
 
-WWW::DojinEvent - 同人イベントのサークルリストを取得・パースする
+WWW::DojinEvent - 同人イベントのデータを取り扱う
 
 # SYNOPSIS
 
@@ -20,18 +20,16 @@ WWW::DojinEvent - 同人イベントのサークルリストを取得・パー�
 
 # DESCRIPTION
 
-同人イベントのサークルリストを、公式WEBサイトの出展サークル一覧から取得します
-
-このモジュールは_WWW::DojinEvent::\*_にある各種同人イベントモジュールのラッパーとして利用します
+このモジュールは_WWW::DojinEvent::\*_にある各種同人イベントモジュールのアクセッサとして機能します
 
 # MODULES
 
 _WWW::DojinEvent_下にあるモジュールの一覧
 
-メソッド名はsnake\_caseになっています
-
 - COMIC1 [http://www.comic1.jp/](http://www.comic1.jp/)
+- Comiket [http://www.comiket.co.jp/](http://www.comiket.co.jp/)
 - Creation [http://www.creation.gr.jp/](http://www.creation.gr.jp/)
+- KettoCom [http://ketto.com/](http://ketto.com/)
 - Reitaisai [http://reitaisai.com/](http://reitaisai.com/)
 
 # LICENSE

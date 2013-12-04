@@ -5,7 +5,7 @@ use warnings;
 use utf8;
 use Module::Load;
 
-our $VERSION = "0.08";
+our $VERSION = "0.09";
 
 sub new {
     my ($class) = @_;
@@ -30,7 +30,7 @@ __END__
 
 =head1 NAME
 
-WWW::DojinEvent - 同人イベントのサークルリストを取得・パースする
+WWW::DojinEvent - 同人イベントのデータを取り扱う
 
 =head1 SYNOPSIS
 
@@ -48,19 +48,19 @@ WWW::DojinEvent - 同人イベントのサークルリストを取得・パー�
 
 =head1 DESCRIPTION
 
-同人イベントのサークルリストを、公式WEBサイトの出展サークル一覧から取得します
-
-このモジュールはI<WWW::DojinEvent::*>にある各種同人イベントモジュールのラッパーとして利用します
+このモジュールはI<WWW::DojinEvent::*>にある各種同人イベントモジュールのアクセッサとして機能します
 
 =head1 MODULES
 
 I<WWW::DojinEvent>下にあるモジュールの一覧
 
-メソッド名はsnake_caseになっています
-
 =item COMIC1 L<http://www.comic1.jp/>
 
+=item Comiket L<http://www.comiket.co.jp/>
+
 =item Creation L<http://www.creation.gr.jp/>
+
+=item KettoCom L<http://ketto.com/>
 
 =item Reitaisai L<http://reitaisai.com/>
 

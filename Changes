@@ -1,6 +1,7 @@
 Revision history for Perl extension WWW-DojinEvent
 
 {{$NEXT}}
+    - merge Data::DojinEvent to this
     - rename scraper base class "Base" to "Scraper"
 
 0.08 2013-07-19T17:01:43Z

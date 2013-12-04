@@ -6,7 +6,8 @@ use utf8;
 use parent qw(WWW::DojinEvent::Scraper);
 use Web::Scraper;
 
-our $VERSION = "0.08";
+use WWW::DojinEvent;
+our $VERSION = $WWW::DojinEvent::VERSION;
 
 sub fields { return qw(circle_name circle_name_kana circle_url) }
 

@@ -9,6 +9,9 @@ use LWP::UserAgent;
 use parent qw(Class::Accessor::Fast);
 __PACKAGE__->mk_accessors(qw( tmp_dir scrape_process web_scraper ));
 
+use WWW::DojinEvent;
+our $VERSION = $WWW::DojinEvent::VERSION;
+
 
 sub fields { die "this is abstract method: fields" }
 sub scrape_process { die "this is abstract method: scrape_process" }
