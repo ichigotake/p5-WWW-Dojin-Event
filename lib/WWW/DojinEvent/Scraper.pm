@@ -1,4 +1,4 @@
-package WWW::DojinEvent::Base;
+package WWW::DojinEvent::Scraper;
 
 use strict;
 use warnings;
@@ -38,14 +38,14 @@ __DATA__
 
 =head1 NAME
 
-WWW::DojinEvent::Base - Base class for all WWW:::DojinEvent modules
+WWW::DojinEvent::Scraper - Scraping base class
 
 =head1 SYNOPSIS
 
     {
         package WWW::DojinEvent::SomeEvent;
 
-        use WWW::DojinEvent::Base qw(-base);
+        use WWW::DojinEvent::Scraper qw(-base);
 
         sub scraper_process {
             return scraper {
@@ -59,7 +59,7 @@ WWW::DojinEvent::Base - Base class for all WWW:::DojinEvent modules
                 };
             };
 
-        1;
+        }
     }
 
     use WWW::DojinEvent::SomeEvent;

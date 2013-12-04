@@ -3,7 +3,7 @@ package WWW::DojinEvent::Creation;
 use strict;
 use warnings;
 use utf8;
-use parent qw(WWW::DojinEvent::Base);
+use parent qw(WWW::DojinEvent::Scraper);
 use Web::Scraper;
 
 our $VERSION = "0.08";
