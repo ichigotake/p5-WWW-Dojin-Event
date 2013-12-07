@@ -48,7 +48,7 @@ WWW::DojinEvent::Scraper - Scraping base class
     {
         package WWW::DojinEvent::SomeEvent;
 
-        use WWW::DojinEvent::Scraper qw(-base);
+        use WWW::DojinEvent::Scraper;
 
         sub scraper_process {
             return scraper {
@@ -67,8 +67,8 @@ WWW::DojinEvent::Scraper - Scraping base class
 
     use WWW::DojinEvent::SomeEvent;
 
-    my $e = WWW::DojinEvent::SomeEvent->new;
-    my $res = $e->scrape('http://some-event.com/circle_list.html');
+    my $event = WWW::DojinEvent::SomeEvent->new;
+    my $res = $event->scrape('http://some-event.com/circle_list.html');
 
     for my$circle ( @{$res->{circles}} ) {
         print "----\n";

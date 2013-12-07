@@ -35,11 +35,11 @@ WWW::DojinEvent::Reitaisai - Reitaisai(博麗神社例大祭)'s website parser
 
     use WWW::DojinEvent::Reitaisai;
 
-    my $e = WWW::DojinEvent::Reitaisai->new;
+    my $event = WWW::DojinEvent::Reitaisai->new;
 
     @circles;
     for $i (1..8) {
-        $res = $e->scrape("http://reitaisai.com/list_circle$i/");
+        $res = $event->scrape("http://reitaisai.com/list_circle$i/");
         @circles = (@circles, @{$res->{circles}});
     }
 
@@ -53,7 +53,7 @@ WWW::DojinEvent::Reitaisai - Reitaisai(博麗神社例大祭)'s website parser
 
 =head1 SEE ALSO
 
-WWW::DojinEvent
+WWW::DojinEvent::Scraper
 
 =head1 LICENSE
 

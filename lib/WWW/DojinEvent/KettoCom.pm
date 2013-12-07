@@ -64,13 +64,15 @@ __END__
 
 =head1 NAME
 
-WWW::DojinEvent - 
+WWW::DojinEvent::KettoCom - ケットコムの出展サークルデータパーサ
 
 =head1 SYNOPSIS
 
     use WWW::DojinEvent::KettoCom;
 
     $circles = WWW::DojinEvent::KettoCom->simple('circlelist.csv');
+
+    # or
 
     $circles = WWW::DojinEvent::KettoCom->parse('circlelist.csv');
 

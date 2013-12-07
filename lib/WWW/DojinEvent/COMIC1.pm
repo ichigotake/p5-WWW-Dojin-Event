@@ -35,9 +35,9 @@ WWW::DojinEvent::COMIC1 - COMIC1's website parser
 
     use WWW::DojinEvent::COMIC1;
 
-    $e = WWW::DojinEvent::COMIC1->new;
+    $event = WWW::DojinEvent::COMIC1->new;
 
-    $res = $e->scrape("http://www.comic1.jp/CM7_circle_list.htm");
+    $res = $event->scrape("http://www.comic1.jp/CM7_circle_list.htm");
 
     for $circle ( @{$res->{circles}} ) {
         print "----\n";

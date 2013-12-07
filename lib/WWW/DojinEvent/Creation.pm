@@ -39,9 +39,9 @@ WWW::DojinEvent::Creation - Creation's website parser
 
     use WWW::DojinEvent::Creation;
 
-    $e = WWW::DojinEvent::Creation->new;
+    $event = WWW::DojinEvent::Creation->new;
 
-    $res = $e->scrape('http://www.creation.gr.jp/sc60/circle_list/sn/a1.html');
+    $res = $event->scrape('http://www.creation.gr.jp/sc60/circle_list/sn/a1.html');
 
     for $circle ( @{$res->{circles}} ) {
         print "----\n";
