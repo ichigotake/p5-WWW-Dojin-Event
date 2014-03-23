@@ -17,6 +17,7 @@ sub scrape_process {
                 process '//td[1]', 'circle_name' => 'TEXT',
                 process '//td[1]/a', 'circle_url' => '@href',
                 process '//td[2]', 'pen_name' => 'TEXT',
+                process '//td[3]', 'space' => 'TEXT',
             };
         };
 }

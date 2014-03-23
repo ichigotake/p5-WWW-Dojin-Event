@@ -9,10 +9,11 @@ use WWW::DojinEvent;
 my $e = WWW::DojinEvent->new;
 
 my $creation = $e->module('COMIC1');
-my $res = $creation->scrape('http://www.comic1.jp/CM7_circle_list.htm');
+my $res = $creation->scrape('http://www.comic1.jp/CM8_circle_list2.htm');
 
 for my$circle(@{$res->{circles}}) {
     print "$circle->{circle_name}\n";
     print "$circle->{pen_name}\n";
     print "$circle->{circle_url}\n";
+    print "$circle->{space}";
 }
