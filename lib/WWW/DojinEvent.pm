@@ -14,7 +14,6 @@ sub new {
 
 sub module {
     my ($self, $name) = @_;
-    warn $name;
     my $class = "WWW::DojinEvent::$name";
     Module::Load::load($class);
     $self->{"module#$name"} //= do {
