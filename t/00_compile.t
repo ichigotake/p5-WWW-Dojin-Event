@@ -3,7 +3,6 @@ use Test::More;
 
 use_ok $_ for qw(
     WWW::DojinEvent
-    WWW::DojinEvent::FileParser
     WWW::DojinEvent::COMIC1
     WWW::DojinEvent::Comiket
     WWW::DojinEvent::Creation
