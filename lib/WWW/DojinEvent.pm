@@ -2,25 +2,21 @@ package WWW::DojinEvent;
 
 use strict;
 use warnings;
-use utf8;
-use Module::Load;
+use Module::Find qw/findsubmod/;
 
 our $VERSION = "0.09";
 
-sub new {
-    my ($class) = @_;
-    bless {}, $class;
-}
+sub modules {
+    my $event_modules = [];
 
-sub module {
-    my ($self, $name) = @_;
-    my $class = "WWW::DojinEvent::$name";
-    Module::Load::load($class);
-    $self->{"module#$name"} //= do {
-        $class->new;
-    };
-}
+    for my $sub_module( findsubmod WWW::DojinEvent ) {
+        if ($sub_module ne 'WWW::DojinEvent::Scraper') {
+            push @$event_modules, $sub_module;
+        }
+    }
 
+    return $event_modules;
+}
 
 1;
 __END__
@@ -29,39 +25,45 @@ __END__
 
 =head1 NAME
 
-WWW::DojinEvent - 同人イベントのデータを取り扱う
+WWW::DojinEvent - "Dojin" event data handler
 
 =head1 SYNOPSIS
 
     use WWW::DojinEvent;
 
-    $event = WWW::DojinEvent->new;
-    $res = $event->module('COMIC1')->scrape('http://www.comic1.jp/CM7_circle_list.htm');
+    # Get including "dojin event" modules.
+    $modules = WWW::DojinEvent::modules;
 
-    for $circle(@{$res->{circles}}) {
-        #print "$circle->{circle_name}\n";
-        #print "$circle->{pen_name}\n";
-        #print "$circle->{circle_url}\n";
+    for $module_name( @$modules ) {
+        print $module_name;
     }
     
 
 =head1 DESCRIPTION
 
-このモジュールはI<WWW::DojinEvent::*>にある各種同人イベントモジュールのアクセッサとして機能します
+This namespace is "Dojin" event data handler modules.
 
-=head1 MODULES
+And this class is hub document.
 
-I<WWW::DojinEvent>下にあるモジュールの一覧
+=head1 METHOD
 
-=item COMIC1 L<http://www.comic1.jp/>
+=head2 modules
 
-=item Comiket L<http://www.comiket.co.jp/>
+Get including "dojin event" modules.
 
-=item Creation L<http://www.creation.gr.jp/>
+=over 4
 
-=item KettoCom L<http://ketto.com/>
+=item L<COMIC1|http://www.comic1.jp>
+ 
+=item L<Comiket1|http://www.comiket.co.jp>
+ 
+=item L<Creation|http://www.creation.gr.jp>
 
-=item Reitaisai L<http://reitaisai.com/>
+=item L<KettoCom|http://ketto.com>
+
+=item L<Reitaisai|http://reitaisai.com>
+
+=back
 
 =head1 LICENSE
 
@@ -73,6 +75,10 @@ it under the same terms as Perl itself.
 =head1 AUTHOR
 
 ichigotake E<lt>k.wisiiy (a) gmail.comE<gt>
+
+=head1 SEE ALSO
+
+Return the I<WWW::DojinEvent::modules> classes.
 
 =cut
 
