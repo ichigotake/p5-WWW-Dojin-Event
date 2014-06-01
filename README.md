@@ -1,18 +1,16 @@
 # NAME
 
-WWW::DojinEvent - 同人イベントのデータを取り扱う
+WWW::DojinEvent - "Dojin" event data handler
 
 # SYNOPSIS
 
     use WWW::DojinEvent;
 
-    $event = WWW::DojinEvent->new;
-    $res = $event->module('COMIC1')->scrape('http://www.comic1.jp/CM7_circle_list.htm');
+    # Get including "dojin event" modules.
+    $modules = WWW::DojinEvent::modules;
 
-    for $circle(@{$res->{circles}}) {
-        #print "$circle->{circle_name}\n";
-        #print "$circle->{pen_name}\n";
-        #print "$circle->{circle_url}\n";
+    for $module_name( @$modules ) {
+        print $module_name;
     }
     
 
@@ -20,17 +18,23 @@ WWW::DojinEvent - 同人イベントのデータを取り扱う
 
 # DESCRIPTION
 
-このモジュールは_WWW::DojinEvent::\*_にある各種同人イベントモジュールのアクセッサとして機能します
+This namespace is "Dojin" event data handler modules.
 
-# MODULES
+And this class is hub document.
 
-_WWW::DojinEvent_下にあるモジュールの一覧
+# METHOD
 
-- COMIC1 [http://www.comic1.jp/](http://www.comic1.jp/)
-- Comiket [http://www.comiket.co.jp/](http://www.comiket.co.jp/)
-- Creation [http://www.creation.gr.jp/](http://www.creation.gr.jp/)
-- KettoCom [http://ketto.com/](http://ketto.com/)
-- Reitaisai [http://reitaisai.com/](http://reitaisai.com/)
+## modules
+
+Get including "dojin event" modules.
+
+- [COMIC1](http://www.comic1.jp)
+ 
+- [Comiket1](http://www.comiket.co.jp)
+ 
+- [Creation](http://www.creation.gr.jp)
+- [KettoCom](http://ketto.com)
+- [Reitaisai](http://reitaisai.com)
 
 # LICENSE
 
@@ -42,3 +46,7 @@ it under the same terms as Perl itself.
 # AUTHOR
 
 ichigotake <k.wisiiy (a) gmail.com>
+
+# SEE ALSO
+
+Return the _WWW::DojinEvent::modules_ classes.
