@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 use Test::More;
+use Array::Utils qw/ array_diff /;
 use WWW::DojinEvent;
 
 my $expected = [
@@ -15,7 +16,7 @@ my $modules = WWW::DojinEvent->modules;
 
 isa_ok($modules, 'ARRAY');
 
-ok(eq_array($modules, $expected));
+ok(!array_diff(@$modules, @$expected));
 
 done_testing;
 
