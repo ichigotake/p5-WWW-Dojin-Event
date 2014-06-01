@@ -1,5 +1,6 @@
 use strict;
 use Test::More;
+use WWW::DojinEvent;
 
 use_ok $_ for qw(
     WWW::DojinEvent
